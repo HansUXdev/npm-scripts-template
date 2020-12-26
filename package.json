@@ -28,5 +28,8 @@
     "node-sass": "^5.0.0",
     "nodemon": "^2.0.6",
     "postcss": "^8.2.1"
+  },
+  "dependencies": {
+    "bootstrap": "^4.5.3"
   }
 }
