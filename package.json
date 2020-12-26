@@ -22,5 +22,11 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "node-sass": "^5.0.0",
+    "nodemon": "^2.0.6",
+    "postcss": "^8.2.1"
+  }
 }
