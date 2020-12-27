@@ -4,6 +4,9 @@
   "description": "The lightest boilerplate you can use for web development.",
   "main": "index.js",
   "config": {
+    "babel":"./node_modules/.bin/babel",
+    "presets":"@babel/preset-env",
+    "plugins":"@babel/plugin-proposal-optional-chaining,@babel/plugin-proposal-function-bind",
     "sourcemaps": "false",
     "style": "compact",
     "src": "./src/",
@@ -18,14 +21,16 @@
     ]
   },
   "scripts": {
-    "test": "echo the path to your source files is here: $npm_package_config_src",
+    "js": "babel $npm_package_config_src/js --out-dir $npm_package_config_dest --presets=$npm_package_config_presets --plugins $npm_package_config_plugins",
   },
   "keywords": [],
-  "author": "",
+  "author": "Hans McMurdy",
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
+    "@babel/plugin-proposal-function-bind": "^7.12.1",
+    "@babel/plugin-proposal-optional-chaining": "^7.12.7",
     "@babel/preset-env": "^7.12.11",
     "cross-env": "^7.0.3",
     "node-sass": "^5.0.0",
