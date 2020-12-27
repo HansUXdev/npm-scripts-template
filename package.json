@@ -11,7 +11,7 @@
     "style": "compact",
     "src": "./src/",
     "dest": "./public",
-    "page": "./index.html",
+    "page": "./src/index.html",
     "port": "3000",
     "extentions": "html,scss,js",
     "ignore ": "",
@@ -22,6 +22,13 @@
   },
   "scripts": {
     "js": "babel $npm_package_config_src/js --out-dir $npm_package_config_dest --presets=$npm_package_config_presets --plugins $npm_package_config_plugins",
+    "precss": "node-sass --include-path node_modules --output-style $npm_package_config_style --source-map true --source-map-contents true --precision 6 $npm_package_config_src/scss -o $npm_package_config_dest/css",
+    "mq":"mqpacker  $npm_package_config_dest/css/bootstrap.css >  $npm_package_config_dest/packed.css",
+    "css": "purgecss --css $npm_package_config_src/css/*.css --content $npm_package_config_page --output $npm_package_config_dest/css/",
+    "postcss": "postcss --replace $npm_package_config_dest/css/*.css --use autoprefixer --map",
+    "minify:css": "cssnano < $npm_package_config_dest/css/bootstrap.css > $npm_package_config_dest/css/bootstrap.min.css",
+    "server": "serve --listen $npm_package_config_port",
+    "watch": "nodemon -e $npm_package_config_extentions -x \"npm run css && npm run js\"",
   },
   "keywords": [],
   "author": "Hans McMurdy",
@@ -32,10 +39,15 @@
     "@babel/plugin-proposal-function-bind": "^7.12.1",
     "@babel/plugin-proposal-optional-chaining": "^7.12.7",
     "@babel/preset-env": "^7.12.11",
+    "autoprefixer": "^10.0.1",
     "cross-env": "^7.0.3",
-    "node-sass": "^5.0.0",
-    "nodemon": "^2.0.6",
-    "postcss": "^8.2.1"
+    "node-css-mqpacker": "^8.0.1",
+    "node-sass": "^4.14.1",
+    "nodemon": "^2.0.5",
+    "postcss": "^8.2.1",
+    "postcss-cli": "^8.3.1",
+    "purgecss": "^3.0.0",
+    "serve": "^11.3.2"
   },
   "dependencies": {
     "bootstrap": "^4.5.3"
